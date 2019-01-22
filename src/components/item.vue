@@ -16,7 +16,7 @@
           </div>
           <div class="itemName"><span>商品：</span><span class="red">{{item.mainname}}</span></div>
 
-          <div class="subTitle">{{item.subtitle}}</div>
+          <div class="subTitle">{{item.subtitle.match(/[0-9]+[a-z]+$/)?item.subtitle.match(/[0-9]+[a-z]+$/)[0]:item.subtitle}}</div>
           <div class="price">￥{{item.price}}</div>
 
         </div>
