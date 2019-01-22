@@ -1,12 +1,12 @@
 <template>
   <div id="itemPage">
-    <div class="header">
+    <div class="header" >
       <span>商品信息：</span>
       <input type="text" v-model="itemMessage">
       <button @click="submit">提交</button>
     </div>
     <div class="body">
-      <table border="1" v-if="data">
+      <table border="1" v-if="data && data.length">
         <thead id="tableHead">
           <th id="abiid">id</th>
           <th id="mainName">商品名称</th>
@@ -14,14 +14,17 @@
           <th>价格</th>
           <th>展示</th>
         </thead>
-        <tbody v-for="(item,index) in data" class="tableBody" :class="{odd:index%2==0}">
-          <td>{{item.abiid}}</td>
-          <td>{{item.mainname}}</td>
-          <td>{{item.subtitle}}</td>
-          <td>{{item.price}}</td>
-          <td><img :src="item.img_url" alt="" title="123"></td>
+        <tbody >
+          <tr v-for="(item,index) in data" :key="index" class="tableBody" :class="{odd:index%2==0}" >
+            <td>{{item.abiid}}</td>
+            <td>{{item.mainname}}</td>
+            <td>{{item.subtitle}}</td>
+            <td>{{item.price}}</td>
+            <td><img :src="item.img_url" alt="" title="123"></td>
+          </tr>
         </tbody>
       </table>
+      <span id="noItem" v-if="data!==null && data.length == 0">无该商品</span>
     </div>
   </div>
 </template>
@@ -112,7 +115,7 @@ export default {
 }
 .body{
   width: 100%;
-  height:calc(100% - 6rem);
+  max-height:calc(100% - 6rem);
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -134,13 +137,14 @@ table{
 }
 #subTitle{
   width: 30%;
-  /* padding: 2px; */
+}
+tr{
+  height: 4rem;
 }
 td{
   overflow:hidden;
-  /* word-break:keep-all; */
   white-space: nowrap;
-  text-overflow:ellipsis
+  text-overflow:ellipsis;
 }
 td:hover{
   overflow: hidden;
@@ -149,5 +153,15 @@ td:hover{
 }
 table img{
   width: 100%;
+}
+#noItem{
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: red;
+  
 }
 </style>
