@@ -97,7 +97,6 @@ export default {
   width: 45%;
   padding: 4px;
   font-size: 1rem;
-  /* border-radius: 2px; */
 }
 .header button{
   margin-left: 1rem;
@@ -114,7 +113,8 @@ export default {
 .body{
   width: 100%;
   height:calc(100% - 6rem);
-  overflow:scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 table{
   width: 100%;
@@ -123,9 +123,6 @@ table{
   border-collapse: collapse;
   border: 1px solid black;
   table-layout:fixed; 
-}
-#tableHead{
-  /* background:  */
 }
 #abiid{
   width: 20%;
@@ -153,10 +150,4 @@ td:hover{
 table img{
   width: 100%;
 }
-/* tbody{
-  background: #fff;
-}
-.odd{
-  background:  #ddd;
-} */
 </style>
