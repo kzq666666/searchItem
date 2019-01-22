@@ -6,7 +6,23 @@
       <button @click="submit">提交</button>
     </div>
     <div class="body">
-      <table border="1" v-if="data && data.length">
+      <div class="item" v-for="(item,index) in data" :key="index">
+        <div class="leftImg">
+          <img :src="item.img_url" alt="无照片">
+        </div>
+        <div class="rightMsg">
+          <div>Id:
+            <span class="lightRed">{{item.abiid}}</span>
+          </div>
+          <div class="itemName"><span>商品：</span><span class="red">{{item.mainname}}</span></div>
+
+          <div class="subTitle">{{item.subtitle}}</div>
+          <div class="price">￥{{item.price}}</div>
+
+        </div>
+      </div>
+      
+      <!-- <table border="1" v-if="data && data.length">
         <thead id="tableHead">
           <th id="abiid">id</th>
           <th id="mainName">商品名称</th>
@@ -24,7 +40,7 @@
           </tr>
         </tbody>
       </table>
-      <span id="noItem" v-if="data!==null && data.length == 0">无该商品</span>
+      <span id="noItem" v-if="data!==null && data.length == 0">无该商品</span> -->
     </div>
   </div>
 </template>
@@ -118,8 +134,67 @@ export default {
   max-height:calc(100% - 6rem);
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
 }
-table{
+.item{
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  margin-bottom: 1.5rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.leftImg{
+  display: inline-block;
+  margin-left: 1rem;
+  width: 40%;
+  text-align: center;
+  line-height:6rem;
+  /* float: left; */
+}
+.leftImg img{
+  width: 100%;
+  height: 100%;
+  line-height: 1rem;
+  vertical-align: middle;
+}
+.rightMsg{
+  width: 50%;
+  height: 100%;
+  margin: 0.5rem;
+  overflow: scroll;
+}
+.rightMsg div{
+  margin-bottom: 1rem;
+}
+.price{
+  font-size: 1.2rem;
+  color: #f40
+}
+.subTitle{
+  display: block;
+  width: 12rem;  
+  font-size: 0.5rem;
+  /* height: 3.7rem; */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+.subTitle:hover{
+  white-space: normal;
+}
+.rightMsg .red{
+  font-weight: bold;
+  color: red;
+  /* font-size: 0.7rem; */
+  /* margin-bottom: 0.5rem; */
+  /* font-size: 1.1rem; */
+}
+.rightMsg .itemName{
+  margin-bottom: 0.5rem;
+}
+/* table{
   width: 100%;
   height: 100%;
   text-align: center;
@@ -143,15 +218,15 @@ tr{
 }
 td{
   overflow:hidden;
-  white-space: nowrap;
-  text-overflow:ellipsis;
-}
-td:hover{
+  /* white-space: nowrap;
+  text-overflow:ellipsis; */
+/* } */
+/* td:hover{
   overflow: hidden;
   white-space: normal;
   text-overflow: unset;
-}
-table img{
+} */
+/* table img{
   width: 100%;
 }
 #noItem{
@@ -162,6 +237,6 @@ table img{
   text-align: center;
   font-size: 1.5rem;
   color: red;
-  
-}
+
+} */ 
 </style>
