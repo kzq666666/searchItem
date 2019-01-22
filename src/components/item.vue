@@ -53,7 +53,8 @@ export default {
     return {
       itemMessage:'',
       token:null,
-      data:null
+      data:null,
+      
     }
   },
   methods: {
@@ -174,7 +175,7 @@ export default {
 .subTitle{
   display: block;
   width: 12rem;  
-  font-size: 0.5rem;
+  /* font-size: 0.5rem; */
   /* height: 3.7rem; */
   overflow: hidden;
   white-space: nowrap;
